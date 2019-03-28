@@ -9,9 +9,9 @@ using System.Collections.Generic;
 
 namespace Ardy.Tools.ArdyLogParser
 {
-    public static class ParserWLServerLog
+    public static class ParseWLServerLog
     {
-        [FunctionName("ParserWLServerLog")]
+        [FunctionName("ParseWLServerLog")]
         public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req, ILogger log)
         {
             log.LogInformation("Received request via http trigger");
