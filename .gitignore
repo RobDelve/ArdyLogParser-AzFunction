@@ -1,0 +1,4 @@
+bin
+.vscode
+obj/ArdyLogParser.csproj.nuget.cache
+obj/ArdyLogParser.csproj.nuget.g.props
