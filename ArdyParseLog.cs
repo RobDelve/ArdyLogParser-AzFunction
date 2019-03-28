@@ -41,14 +41,13 @@ namespace Ardy.Tools.ArdyLogParser
             List<object> result = new List<object>();
             foreach (var (m, dict) in from Match match in matchCol
                                         let dict = new Dictionary<string, string>()
-                                      select (match, dict))
+                                        select (match, dict))
             {
                 for (int i = 0; i < groupNameCol.Count; i++)
                 {
                     string groupName = groupNameCol[i];
                     dict.Add(groupName, m.Groups[groupName].Value);
                 }
-
                 result.Add(dict);
             }
 
@@ -60,7 +59,7 @@ namespace Ardy.Tools.ArdyLogParser
         // Bypass hassle with processing the datetime pattern used by the default Hyperion WLServerLog format
         {
             List<object> result = new List<object>();
-            foreach (var (match, dict, dateTime) in from Match match in matchCol
+            foreach (var (m, dict, dateTime) in from Match match in matchCol
                                                 let dict = new Dictionary<string, string>()                                                
                                                 let epoch = long.Parse(match.Groups[utmField].Value)
                                                 let dateTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(epoch)
@@ -71,9 +70,8 @@ namespace Ardy.Tools.ArdyLogParser
                 for (int i = 0; i < groupNameCol.Count; i++)
                 {
                     string groupName = groupNameCol[i];
-                    dict.Add(groupName, match.Groups[groupName].Value);
+                    dict.Add(groupName, m.Groups[groupName].Value);
                 }
-
                 result.Add(dict);
             }
 
